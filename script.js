@@ -13,8 +13,17 @@ var howMany= function(type, length, maxlength){
     console.log(output, type);
     return output;
   }
- 
 }
+
+var generatePassword = function(totalLength, capitalLength, vowelLength, numberLength, specialLength){
+
+
+
+
+
+}
+
+
 
 // Write password to the #password input
 function writePassword() {
@@ -26,8 +35,8 @@ function writePassword() {
     console.log("Password length:" + passwordLength);
     console.log("current length" + currentLength);
 
-    capitols = howMany("capitol letters", currentLength, passwordLength);
-    currentLength += capitols;
+    capitals = howMany("capital letters", currentLength, passwordLength);
+    currentLength += capitals;
 
     vowels = howMany("vowels", currentLength, passwordLength);
     currentLength += vowels;
@@ -39,7 +48,7 @@ function writePassword() {
     currentLength += specialChars;
     
 
-    var password = generatePassword(passwordLength, capitols, vowels, numbers, specialChars);
+    var password = generatePassword(passwordLength, capitals, vowels, numbers, specialChars);
     var passwordText = document.querySelector("#password");
     passwordText.value = password;
 
