@@ -2,6 +2,9 @@
 var generateBtn = document.querySelector("#generate");
 
 var howMany= function(type, length, maxlength){
+  if(length === maxlength){
+    return 0;
+  }
   console.log(length);
   console.log(maxlength);
   var output = prompt("How many " + type + " do you want in your password?");
@@ -30,12 +33,12 @@ var shuffle = function(a) {
 var generatePassword = function(totalLength, capitalLength, vowelLength, numberLength, specialLength){
   finalPassword = [];
   placeInPassword = 0;
-  totalLength = totalLength - (capitalLength + vowelLength + numberLength + specialLength);
   var character = "f";
   var capitals = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
   var vowels = "aeiouAEIOU";
   var numbers = "123456789";
   var specials = "!@#$%^&*(()_+=-[]\';/.,<?':"
+  totalLength -= (specialLength + numberLength + vowelLength + capitalLength);
 
 
   for(i = 0; i < capitalLength; i += 0){
@@ -90,6 +93,8 @@ var generatePassword = function(totalLength, capitalLength, vowelLength, numberL
     }
   } 
 
+
+
   for(i = 0; i < totalLength; i){
     character = prompt("You have " + totalLength + " characters to add, what do you add?");
     finalPassword[placeInPassword] = character[0];
@@ -98,9 +103,9 @@ var generatePassword = function(totalLength, capitalLength, vowelLength, numberL
   }
 
   finalPassword = shuffle(finalPassword);
-
+  var stringFinalPassword = finalPassword.join("");
   
-    return finalPassword;
+    return stringFinalPassword;
 
 
 }
@@ -110,7 +115,7 @@ var generatePassword = function(totalLength, capitalLength, vowelLength, numberL
 // Write password to the #password input
 function writePassword() {
   currentLength = 0;
-
+  
   passwordLength = prompt("how long do you want your password to be?");
   passwordLength = parseInt(passwordLength);
   if (passwordLength >= 8 && passwordLength <= 128){
