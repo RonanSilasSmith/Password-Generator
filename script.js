@@ -15,17 +15,34 @@ var howMany= function(type, length, maxlength){
   }
 }
 
+//tried to look around for how to shuffle an array, found this on stack overflow and it was the most reasonable feeling way to do this
+var shuffle = function(a) {
+  var j, x, i;
+  for (i = a.length - 1; i > 0; i--) {
+      j = Math.floor(Math.random() * (i + 1));
+      x = a[i];
+      a[i] = a[j];
+      a[j] = x;
+  }
+  return a;
+}
+
 var generatePassword = function(totalLength, capitalLength, vowelLength, numberLength, specialLength){
   finalPassword = [];
   placeInPassword = 0;
-  var character = "";
+  totalLength = totalLength - (capitalLength + vowelLength + numberLength + specialLength);
+  var character = "f";
+  var capitals = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+  var vowels = "aeiouAEIOU";
+  var numbers = "123456789";
+  var specials = "!@#$%^&*(()_+=-[]\';/.,<?':"
 
 
   for(i = 0; i < capitalLength; i += 0){
     character = prompt("Which capital letters do you want to add? " + capitalLength + " capitals remaining.");
-    if(true === true){
+    if(capitals.indexOf(character[0]) !== -1){
       capitalLength -= 1;
-      finalPassword[placeInPassword] = character;
+      finalPassword[placeInPassword] = character[0];
       placeInPassword ++;
       
     }
@@ -36,9 +53,9 @@ var generatePassword = function(totalLength, capitalLength, vowelLength, numberL
 
   for(i = 0; i < vowelLength; i){
     character = prompt("Which vowels do you want to add? " + vowelLength + " vowels remaining.");
-    if(true === true){
+    if(vowels.indexOf(character[0]) !== -1){
       vowelLength -= 1;
-      finalPassword[placeInPassword] = character;
+      finalPassword[placeInPassword] = character[0];
       placeInPassword ++;
       
     }
@@ -50,11 +67,10 @@ var generatePassword = function(totalLength, capitalLength, vowelLength, numberL
 
   for(i = 0; i < numberLength; i){
     character = prompt("Which numbers do you want to add? " + numberLength + " numbers remaining.");
-    if(true === true){
+    if(numbers.indexOf(character[0]) !== -1){
       numberLength -= 1;
-      finalPassword[placeInPassword] = character;
+      finalPassword[placeInPassword] = character[0];
       placeInPassword ++;
-      
     }
     else{
       alert("That input is not a number");
@@ -63,9 +79,9 @@ var generatePassword = function(totalLength, capitalLength, vowelLength, numberL
 
   for(i = 0; i < specialLength; i){
     character = prompt("Which special characters do you want to add? " + specialLength + " specials remaining.");
-    if(true === true){
+    if(specials.indexOf(character[0]) !== -1){
       specialLength -= 1;
-      finalPassword[placeInPassword] = character;
+      finalPassword[placeInPassword] = character[0];
       placeInPassword ++;
       
     }
@@ -74,9 +90,14 @@ var generatePassword = function(totalLength, capitalLength, vowelLength, numberL
     }
   } 
 
- 
+  for(i = 0; i < totalLength; i){
+    character = prompt("You have " + totalLength + " characters to add, what do you add?");
+    finalPassword[placeInPassword] = character[0];
+    placeInPassword ++;
+    totalLength --;
+  }
 
-    
+  finalPassword = shuffle(finalPassword);
 
   
     return finalPassword;
