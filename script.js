@@ -16,9 +16,70 @@ var howMany= function(type, length, maxlength){
 }
 
 var generatePassword = function(totalLength, capitalLength, vowelLength, numberLength, specialLength){
+  finalPassword = [];
+  placeInPassword = 0;
+  var character = "";
 
 
+  for(i = 0; i < capitalLength; i += 0){
+    character = prompt("Which capital letters do you want to add? " + capitalLength + " capitals remaining.");
+    if(true === true){
+      capitalLength -= 1;
+      finalPassword[placeInPassword] = character;
+      placeInPassword ++;
+      
+    }
+    else{
+      alert("That input is not a capital letter");
+    }
+  }
 
+  for(i = 0; i < vowelLength; i){
+    character = prompt("Which vowels do you want to add? " + vowelLength + " vowels remaining.");
+    if(true === true){
+      vowelLength -= 1;
+      finalPassword[placeInPassword] = character;
+      placeInPassword ++;
+      
+    }
+    else{
+      alert("That input is not a vowel");
+    }
+  } 
+
+
+  for(i = 0; i < numberLength; i){
+    character = prompt("Which numbers do you want to add? " + numberLength + " numbers remaining.");
+    if(true === true){
+      numberLength -= 1;
+      finalPassword[placeInPassword] = character;
+      placeInPassword ++;
+      
+    }
+    else{
+      alert("That input is not a number");
+    }
+  } 
+
+  for(i = 0; i < specialLength; i){
+    character = prompt("Which special characters do you want to add? " + specialLength + " specials remaining.");
+    if(true === true){
+      specialLength -= 1;
+      finalPassword[placeInPassword] = character;
+      placeInPassword ++;
+      
+    }
+    else{
+      alert("That input is not a special character");
+    }
+  } 
+
+ 
+
+    
+
+  
+    return finalPassword;
 
 
 }
